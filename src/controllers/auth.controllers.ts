@@ -9,6 +9,7 @@ export const register = async(req: Request, res: Response) => {
         if(!newUser) return httpResponse.Unauthorized(res, 'Email registered in database');
         else return httpResponse.Ok(res, newUser);
     } catch (error) {
+        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 }
