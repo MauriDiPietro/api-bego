@@ -3,7 +3,7 @@ import { check, validationResult } from 'express-validator';
 import { HttpResponse } from '../../utils/http.response';
 const httpResponse = new HttpResponse();
 
-export const validateRegister = [
+export const userValidator = [
     check('email', 'Insert email valid') 
         .exists()
         .not()  
