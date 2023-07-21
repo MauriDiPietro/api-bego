@@ -16,4 +16,4 @@ export const createHash = async(password: string) => hash(password, 10);
  * @param {*} password contraseña proporcionada por el usuario, sin encriptar.
  * @returns boolean
  */
-export const isValidPassword = (user: Auth, password: string) => compare(password, user.password);
+export const isValidPassword = async(user: Auth, password: string) => compare(password, user.password);
