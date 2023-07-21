@@ -1,22 +1,22 @@
-import { Schema, model } from 'mongoose';
-import { User } from '../interfaces/user.interface';
+import { Schema, model } from "mongoose";
+import { Auth } from "../interfaces/auth.interface";
 
-const userSchema = new Schema<User>(
+const userSchema = new Schema<Auth>(
   {
     email: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
     password: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   {
     timestamps: true,
-    versionKey: false
+    versionKey: false,
   }
 );
 
-export const UserModel = model('users', userSchema);
+export const UserModel = model("users", userSchema);
