@@ -11,7 +11,7 @@ export const generateToken = (user: User | any) => {
     };
 
     const token = jwt.sign(payload, JWT_KEY, {
-        expiresIn: '20m'
+        // expiresIn: '20m'
     });
 
     return token;
