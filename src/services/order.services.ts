@@ -3,7 +3,7 @@ import { OrderModel } from "../models/order.model";
 import { RouteModel } from "../models/route.model";
 import { getTruckById } from "./truck.services";
 
-export const create = async(order: Order): Promise<Order | undefined> => {
+export const create = async(order: Order): Promise<Order | undefined | boolean> => {
     try {
         const route = await RouteModel.findById(order.route);
         if(route !== null){
