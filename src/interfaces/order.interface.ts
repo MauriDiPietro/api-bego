@@ -5,3 +5,8 @@ export interface Order {
     status: string;
     truck: string[];
 };
+
+export interface OrderDocument extends Order, Document {
+    save(): Promise<OrderDocument>;
+}
+  
