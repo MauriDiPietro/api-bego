@@ -4,7 +4,7 @@ import * as controllers from '../controllers/route.controllers';
 import { validateToken } from '../middlewares/token.validate';
 import { routeValidator } from '../middlewares/validators/route.validator';
 
-router.post('/:idPointA/:idPointB', routeValidator, validateToken, controllers.create);
+router.post('/:idPointA/:idPointB', validateToken, controllers.create);
 router.get('/:placeIdPointA/:placeIdPointB',validateToken, controllers.getCoordinates);
 router.get('/distance/:placeIdPointA/:placeIdPointB', validateToken, controllers.getDistance);
 router.get('/', validateToken, controllers.getAll);
