@@ -10,3 +10,11 @@ export const getTruckById = async(id: string) => {
     }
 };
 
+export const getAll = async() => {
+    try {
+        const trucks = await TruckModel.find({});
+        return trucks;
+    } catch (error) {
+        console.log(error);
+    }
+};
