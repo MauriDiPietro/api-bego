@@ -76,10 +76,14 @@ localhost:8080/api/route/:placeIdPointA/:placeIdPointB
     "status": 200,
     "statusMsg": "Success",
     "data": {
-        "route": "from: Puerto Madero, CABA | to: Parador - Centro Recreativo Camioneros Río Negro",
-        "_id": "64bc2a9429d901f45be21d24",
-        "createdAt": "2023-07-22T19:14:28.960Z",
-        "updatedAt": "2023-07-22T19:14:28.960Z"
+        "pointA": {
+            "latitude": -23.128383,
+            "longitude": -64.3216987
+        },
+        "pointB": {
+            "latitude": -32.8568597,
+            "longitude": -68.8152362
+        }
     }
 }
 ```
