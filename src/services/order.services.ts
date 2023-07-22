@@ -1,11 +1,15 @@
 import { Order } from "../interfaces/order.interface";
 import { OrderModel } from "../models/order.model";
+import { RouteModel } from "../models/route.model";
 import { getTruckById } from "./truck.services";
 
 export const create = async(order: Order) => {
     try {
-        const newOrder = await OrderModel.create(order);
-        return newOrder;
+        const route = await RouteModel.findById(order.route);
+        if(route !== null){
+            const newOrder = await OrderModel.create(order);
+            return newOrder;
+        } else return false;
     } catch (error) {
         console.log(error);
     }
@@ -50,7 +54,7 @@ export const remove = async(id: string) => {
 
 export const getById = async(id: string) => {
     try {
-        const order = await OrderModel.findById(id).populate('truck');
+        const order = await OrderModel.findById(id).populate(['truck', 'route']);
         return order;
     } catch (error) {
         console.log(error);
@@ -59,7 +63,7 @@ export const getById = async(id: string) => {
 
 export const getAll = async() => {
     try {
-        const orders = await OrderModel.find({}).populate('truck');
+        const orders = await OrderModel.find({}).populate(['truck', 'route']);
         return orders;
     } catch (error) {
         console.log(error);
