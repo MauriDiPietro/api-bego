@@ -11,10 +11,13 @@ const orderSchema = new Schema<Order>(
       type: String,
       required: true,
     },
-    route: {
-      type: String,
-      required: true,
-    },
+    route: [
+      {
+      type: Schema.Types.ObjectId,
+      ref: "routes",
+      default: []
+      }
+    ],
     status: {
       type: String,
       enum: ["planning", "in progress", "complete"],
