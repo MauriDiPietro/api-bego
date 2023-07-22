@@ -1,8 +1,8 @@
-import { Order } from "../interfaces/order.interface";
+import { Order, OrderDocument } from "../interfaces/order.interface";
 import { OrderModel } from "../models/order.model";
 import { getTruckById } from "./truck.services";
 
-export const create = async(order: Order) => {
+export const create = async(order: Order): Promise<Order | undefined> => {
     try {
         const newOrder = await OrderModel.create(order);
         return newOrder;
@@ -11,7 +11,7 @@ export const create = async(order: Order) => {
     }
 };
 
-export const updateStatus = async(id: string, status: string) => {
+export const updateStatus = async(id: string, status: string): Promise<Order | undefined | null> => {
     try {
         const order = await OrderModel.findByIdAndUpdate(
             id,
@@ -48,7 +48,7 @@ export const remove = async(id: string) => {
     }
 };
 
-export const getById = async(id: string) => {
+export const getById = async(id: string): Promise<OrderDocument | null | undefined> => {
     try {
         const order = await OrderModel.findById(id).populate('truck');
         return order;
@@ -57,7 +57,7 @@ export const getById = async(id: string) => {
     }
 };
 
-export const getAll = async() => {
+export const getAll = async(): Promise<Order[] | undefined> => {
     try {
         const orders = await OrderModel.find({}).populate('truck');
         return orders;
@@ -66,7 +66,7 @@ export const getAll = async() => {
     }
 };
 
-export const addTruckToOrder = async (truckId: string, orderId: string) => {
+export const addTruckToOrder = async (truckId: string, orderId: string): Promise<Order | boolean | undefined> => {
     try {
         const truck = await getTruckById(truckId);
         if(truck){

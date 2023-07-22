@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { Order } from "../interfaces/order.interface";
+import { Order, OrderDocument } from "../interfaces/order.interface";
 
 const orderSchema = new Schema<Order>(
   {
@@ -34,4 +34,4 @@ const orderSchema = new Schema<Order>(
   }
 );
 
-export const OrderModel = model("orders", orderSchema);
+export const OrderModel = model<OrderDocument>("orders", orderSchema);
