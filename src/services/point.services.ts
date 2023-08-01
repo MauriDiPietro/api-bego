@@ -5,7 +5,7 @@ export const getAll = async(): Promise<Point[] | undefined> => {
     try {
         const points = await PointModel.find({});
         return points;
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error: unknown) {
+        throw new Error((error as Error).message);
+      }
 };

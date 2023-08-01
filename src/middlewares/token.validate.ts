@@ -22,7 +22,6 @@ export const validateToken = async (req: Request | any, res: Response, next: Nex
       req.user = user;
       next();
     } catch (error) {
-      console.log(error);
       return httpResponse.ServerError(res, error);
     }
   };

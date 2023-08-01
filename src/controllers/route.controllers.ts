@@ -11,7 +11,6 @@ export const create = async (req: Request, res: Response) => {
         if(route) return httpResponse.Ok(res, route);
         else return httpResponse.NotFound(res, 'Error creating route');
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };
@@ -24,7 +23,6 @@ export const getCoordinates = async(req: Request, res: Response) => {
         if(coordinates) return httpResponse.Ok(res, coordinates);
         else return httpResponse.NotFound(res, 'Error loading coordinates');
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };
@@ -52,7 +50,6 @@ export const getAll = async (req: Request, res: Response) => {
         const routes = await services.getAll();
         return httpResponse.Ok(res, routes); 
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };
@@ -63,7 +60,6 @@ export const getById = async (req: Request, res: Response) => {
         const route = await services.getById(id);
         return httpResponse.Ok(res, route);
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };
@@ -75,7 +71,6 @@ export const update = async (req: Request, res: Response) => {
         if(updRoute) return httpResponse.Ok(res, updRoute);
         else return httpResponse.NotFound(res, 'Error updating route')
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };
@@ -87,7 +82,6 @@ export const remove = async(req: Request, res: Response) => {
         if(delRoute) return httpResponse.Ok(res, delRoute);
         else return httpResponse.NotFound(res, 'Error removing route')
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };

@@ -10,9 +10,9 @@ export const create = async(order: Order): Promise<Order | undefined | boolean> 
             const newOrder = await OrderModel.create(order);
             return newOrder;
         } else return false;
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error: unknown) {
+    throw new Error((error as Error).message);
+  }
 };
 
 export const updateStatus = async(id: string, status: string): Promise<Order | undefined | null> => {
@@ -23,9 +23,9 @@ export const updateStatus = async(id: string, status: string): Promise<Order | u
             { new: true }
         );
         return order;
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error: unknown) {
+    throw new Error((error as Error).message);
+  }
 };
 
 export const update = async(id: string, body: Order) => {
@@ -35,9 +35,9 @@ export const update = async(id: string, body: Order) => {
             const orderUpdate = await OrderModel.updateOne(body);
             return orderUpdate;
         } else return false;
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error: unknown) {
+    throw new Error((error as Error).message);
+  }
 };
 
 export const remove = async(id: string) => {
@@ -47,27 +47,27 @@ export const remove = async(id: string) => {
             const orderRemove = await OrderModel.deleteOne({ _id: id });
             return orderRemove;
         } return false;
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error: unknown) {
+    throw new Error((error as Error).message);
+  }
 };
 
 export const getById = async(id: string): Promise<OrderDocument | null | undefined> => {
     try {
         const order = await OrderModel.findById(id).populate(['truck', 'route']);
         return order;
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error: unknown) {
+    throw new Error((error as Error).message);
+  }
 };
 
 export const getAll = async(): Promise<Order[] | undefined> => {
     try {
         const orders = await OrderModel.find({}).populate(['truck', 'route']);
         return orders;
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error: unknown) {
+    throw new Error((error as Error).message);
+  }
 };
 
 export const addTruckToOrder = async (truckId: string, orderId: string): Promise<Order | boolean | undefined> => {
@@ -82,7 +82,7 @@ export const addTruckToOrder = async (truckId: string, orderId: string): Promise
                 return order;
             } else return false;
         } else return false;
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error: unknown) {
+    throw new Error((error as Error).message);
+  }
 };

@@ -10,7 +10,6 @@ export const register = async(req: Request, res: Response) => {
         if(!newUser) return httpResponse.Unauthorized(res, 'User registered in database');
         else return httpResponse.Ok(res, newUser);
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };
@@ -25,7 +24,6 @@ export const login = async(req: Request, res: Response)=>{
            return httpResponse.Ok(res, access_token);
        }
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 }

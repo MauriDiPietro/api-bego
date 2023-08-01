@@ -8,7 +8,6 @@ export const getAll = async (req: Request, res: Response) => {
         const points = await services.getAll();
         return httpResponse.Ok(res, points); 
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };

@@ -11,8 +11,8 @@ export const register = async ({ email, password }: Auth): Promise<boolean | Aut
         return newUser;
     } 
     else return false;
-  } catch (error) {
-    console.log(error);
+  } catch (error: unknown) {
+    throw new Error((error as Error).message);
   }
 };
 
@@ -24,7 +24,7 @@ export const login = async ({ email, password }: Auth): Promise<boolean | Auth |
         if(!passValid) return null
         else return existUser
     } else return null;
-  } catch (error) {
-    console.log(error);
+  } catch (error: unknown) {
+    throw new Error((error as Error).message);
   }
 };

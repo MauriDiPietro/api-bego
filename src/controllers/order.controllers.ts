@@ -10,7 +10,6 @@ export const create = async(req: Request, res: Response) => {
         const newOrder = await services.create(order);
         return httpResponse.Ok(res, newOrder);
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };
@@ -22,7 +21,6 @@ export const updateStatus = async(req: Request, res: Response) => {
         const updOrder = await services.updateStatus(id, status);
         return httpResponse.Ok(res, updOrder);
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };
@@ -34,7 +32,6 @@ export const update = async(req: Request, res: Response) => {
         if(updOrder) return httpResponse.Ok(res, updOrder);
         else return httpResponse.NotFound(res, 'Error updating order')
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };
@@ -46,7 +43,6 @@ export const remove = async(req: Request, res: Response) => {
         if(delOrder) return httpResponse.Ok(res, delOrder);
         else return httpResponse.NotFound(res, 'Error removing order')
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };
@@ -57,7 +53,6 @@ export const getById = async(req: Request, res: Response) => {
         const order = await services.getById(id);
         return httpResponse.Ok(res, order);
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };
@@ -67,7 +62,6 @@ export const getAll = async(req: Request, res: Response) => {
         const orders = await services.getAll();
         return httpResponse.Ok(res, orders);
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };
@@ -80,7 +74,6 @@ export const addTruckToOrder = async(req: Request, res: Response) => {
         if(!order) return httpResponse.NotFound(res, 'Error add truck to order')
         else return httpResponse.Ok(res, order);
     } catch (error) {
-        console.log(error);
         return httpResponse.ServerError(res, error);
     }
 };
